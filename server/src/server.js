@@ -14,8 +14,8 @@ async function start() {
     }
   }
 
-  const server = app.listen(env.port, () => {
-    console.log(`Finora API running on http://localhost:${env.port}`);
+  const server = app.listen(env.port, '0.0.0.0', () => {
+  console.log(`Finora API running on port ${env.port}`);
     if (isMemory) {
       console.log('Using in-memory MongoDB. Data resets when the server stops.');
     }
