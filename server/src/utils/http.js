@@ -1,0 +1,12 @@
+export function createError(statusCode, message, details) {
+  const error = new Error(message);
+  error.statusCode = statusCode;
+  if (details) error.details = details;
+  return error;
+}
+
+export function asyncHandler(handler) {
+  return function wrappedHandler(req, res, next) {
+    Promise.resolve(handler(req, res, next)).catch(next);
+  };
+}
